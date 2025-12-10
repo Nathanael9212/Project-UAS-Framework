@@ -56,4 +56,8 @@ Relasi:
 
 ## 👨‍💻 Author
 
-**Nathanael** — _(isi NIM & Prodi di sini)_
+**Nathanael Kristian Sujarwo    23081010271
+**Paulus Calep Sandria Saputra 	23081010275
+**Nony Yonindah 			    23081010055
+**Moch. Wahyu Aditya 		    23081010126
+
