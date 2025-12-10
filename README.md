@@ -1,59 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 Sistem Pendaftaran Siswa Baru
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web untuk mengelola pendaftaran siswa baru secara online dengan tampilan admin dashboard berbasis template **Mazer**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 💡 Gambaran Singkat
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Siswa** bisa daftar akun, lengkapi biodata, upload foto, dan memilih **maksimal 2 jurusan**.
+- **Admin & Petugas** mengelola data siswa, jurusan, dan memutuskan pendaftaran **diterima / ditolak**.
+- Sistem menggunakan **role-based access**, jadi setiap role hanya melihat menu dan fitur yang sesuai.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🔄 Cara Kerja Website
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Alur Siswa**
+1. Register & login → otomatis sebagai `siswa`.
+2. Isi biodata lengkap + upload foto.
+3. Pilih jurusan (maks 2) → status awal **Pending**.
+4. Cek riwayat pendaftaran & status (**Pending / Diterima / Ditolak**).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Alur Admin/Petugas**
+1. Login ke dashboard admin.
+2. Lihat statistik: total siswa, total pendaftaran, pending, diterima, ditolak.
+3. Kelola:
+   - **Data Siswa** (CRUD + foto profil).
+   - **Data Jurusan** (CRUD).
+   - **Data Pendaftaran** (review, approve, reject).
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ✨ Fitur Utama
 
-### Premium Partners
+- 3 Level user: **Admin, Petugas, Siswa**.
+- CRUD **Siswa, Jurusan, Pendaftaran**.
+- Upload & tampilkan **foto profil** di sidebar dan tabel.
+- Validasi: **maksimal 2 jurusan per siswa**, tidak bisa daftar jurusan yang sama dua kali.
+- Dashboard khusus untuk admin dan siswa dengan tampilan modern (Mazer).
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🧱 Database & Relasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- `users` (akun + role)  
+- `siswas` (profil siswa + foto, FK ke `users`)  
+- `jurusans` (daftar jurusan)  
+- `pendaftarans` (riwayat pendaftaran, FK ke `siswas` & `jurusans`)
 
-## Code of Conduct
+Relasi:
+- `users` 1–1 `siswas`  
+- `siswas` 1–N `pendaftarans`  
+- `jurusans` 1–N `pendaftarans`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 👨‍💻 Author
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Nathanael** — _(isi NIM & Prodi di sini)_
